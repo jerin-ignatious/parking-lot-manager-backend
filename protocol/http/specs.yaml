@@ -1,0 +1,27 @@
+openapi: 3.0.1
+info:
+  title: Parking Lot Manager
+  description: Open API spec for Parking Lot Manager
+  version: v1
+servers:
+  - url: "https://parking-lot-manager"
+paths:
+  /easy-park/v1/parking-lot/all-slots:
+    get:
+      tags:
+        - ParkingLot
+      summary: API get details of all slots given a parking lot id
+      operationId: getAllSlots
+      parameters:
+        - in: query
+          name: parkingLotId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
