@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: parking-lot-manager
+  datasource:
+    name: parking-lot-manager-db
+    url: jdbc:postgresql://localhost:5432/parking-lot-manager-db
+    username: parking-lot-dev-db
+    password: parking-lot-dev
+    hikari:
+      minimumIdle: 10
+      maximumPoolSize: 25
+      data-source-properties:
+        #loggerLevel: TRACE
+        logUnclosedConnections: true
+  flyway:
+    connectRetries: 20
+    baselineOnMigrate: true
+    baselineVersion: 0
+    locations: classpath:db/migration
+server:
+  port: 8080
