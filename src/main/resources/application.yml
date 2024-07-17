@@ -19,3 +19,10 @@ spring:
     locations: classpath:db/migration
 server:
   port: 8080
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: DEBUG
+#        boot: DEBUG

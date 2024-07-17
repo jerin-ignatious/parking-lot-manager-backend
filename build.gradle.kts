@@ -5,7 +5,7 @@ plugins {
 	id("org.openapi.generator") version "7.4.0"
 }
 
-group = "jerin.ignatious"
+group = "jerin.ignatious.parking.lot"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -15,8 +15,13 @@ java {
 }
 
 dependencies {
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	implementation("org.springframework.cloud:spring-cloud-openfeign-core")
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-web"){
+		exclude(group = "org.springframework.boot", module = "spring-boot-starter-tomcat")
+	}
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.flywaydb:flyway-core")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -24,6 +29,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
 	implementation("io.swagger.core.v3:swagger-annotations:2.2.0")
+
+	// BOM imports
+	implementation(platform("org.springframework.boot:spring-boot-dependencies:2.6.1"))
+	implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2021.0.0"))
 }
 
 allprojects {
